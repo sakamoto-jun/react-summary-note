@@ -1,28 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
-import { addNote } from "../store/noteSlice";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { useAddNote } from "../hooks/useAddNote";
 
 const Sidebar = () => {
-  const navigate = useNavigate();
   const notes = useSelector((state) => state.notes);
-  const dispatch = useDispatch();
 
-  const handleClick = () => {
-    const id = uuidv4();
-    const newNote = {
-      time: new Date().toLocaleString(),
-      id,
-      title: "새로운 노트",
-      content: "",
-      summary: "",
-    };
-    dispatch(addNote(newNote));
-    navigate(`/notes/${id}`);
-  };
+  const handleClick = useAddNote();
 
   return (
-    <div className="w-[230px] p-4">
+    <div className="flex-shrink-0 w-[230px] p-4">
       <h1 className="text-2xl font-bold mb-4">Summary Note</h1>
       <button
         className="bg-zinc-600 hover:bg-zinc-500 w-full py-2 px-4 rounded"
