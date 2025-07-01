@@ -1,24 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NoteDetail from "./components/NoteDetail";
-import NoteList from "./components/NoteList";
-import Home from "./pages/Home";
+import { routerConfig } from "./routes";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    children: [
-      {
-        index: true,
-        element: <NoteList />,
-      },
-      {
-        path: "notes/:id",
-        element: <NoteDetail />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(routerConfig);
 
 function App() {
   return <RouterProvider router={router} />;

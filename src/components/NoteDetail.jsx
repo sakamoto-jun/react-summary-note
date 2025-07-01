@@ -73,6 +73,7 @@ const NoteDetail = () => {
             type="text"
             className="px-1 bg-transparent text-2xl font-bold focus:outline-none focus:outline-gray-300"
             value={note.title}
+            aria-label="제목"
             onChange={handleChangeTitle}
           />
         </div>
@@ -91,6 +92,7 @@ const NoteDetail = () => {
           <textarea
             className="block w-full h-64 p-2 mb-2 rounded bg-zinc-700 resize-none focus:outline-none focus:ring-2 focus:ring-gray-300"
             value={note.content}
+            placeholder="내용 입력"
             onChange={handleChangeContent}
           ></textarea>
           <button
